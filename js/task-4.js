@@ -1,18 +1,16 @@
 function getShippingCost(country) {
-  const countriesShippingCost = [
-    { countryName: 'China', const: 100 },
-    { countryName: 'Chile', const: 250 },
-    { countryName: 'Australia', const: 170 },
-    { countryName: 'Jamaica', const: 120 },
-  ];
-
-  const currentCountryObj = countriesShippingCost.find(
-    (countryObject) => countryObject.countryName === country
-  );
-
-  return currentCountryObj
-    ? `Shipping to ${currentCountryObj.countryName} will cost ${currentCountryObj.const} credits`
-    : 'Sorry, there is no delivery to your country';
+  switch (country) {
+    case 'China':
+      return 'Shipping to China will cost 100 credits';
+    case 'Chile':
+      return 'Shipping to Chile will cost 250 credits';
+    case 'Jamaica':
+      return 'Shipping to Jamaica will cost 120 credits';
+    case 'Australia':
+      return 'Shipping to Australia will cost 170 credits';
+    default:
+      return 'Sorry, there is no delivery to your country';
+  }
 }
 
 console.log(getShippingCost('Australia')); // "Shipping to Australia will cost 170 credits"

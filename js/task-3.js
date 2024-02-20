@@ -1,22 +1,5 @@
 function checkForSpam(message) {
-  const separators = [',', '?', '!', ';', ':', '.', '[', ']'];
-  const regex = new RegExp(`[${separators.map(escapeRegExp).join('')}]`, 'g');
-  const cleanedText = message.replace(regex, '');
-  const messageArray = cleanedText.toLowerCase().split(' ');
-  let result = false;
-
-  for (let i = 0; i < messageArray.length; i++) {
-    if (messageArray[i] === 'spam' || messageArray[i] === 'sale') {
-      result = true;
-      break;
-    }
-  }
-
-  return result;
-}
-
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& означає всі знайдені співпадіння
+  return message.toLowerCase().includes('spam') || message.toLowerCase().includes('sale');
 }
 
 console.log(checkForSpam('Latest technology news')); // false
